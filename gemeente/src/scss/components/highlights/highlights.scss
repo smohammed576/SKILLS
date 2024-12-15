@@ -1,0 +1,64 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.highlights{
+
+    &__title{
+        font-size: 140%;
+        padding: 1rem 2rem;
+    }
+
+    &__wrapper{
+        width: 100%;
+        padding: 1rem;
+        @include mixins.flexBox;
+        flex-direction: column;
+    }
+
+    &__figure{
+        width: 100%;
+        box-shadow: 0 0 0.8rem 0.2rem rgba(0, 0, 0, 0.2);
+        border-radius: 2rem;
+
+        &--image{
+            width: 100%;
+            object-fit: contain;
+            border-radius: 2rem;
+        }
+        &--wrapper{
+            height: 7rem;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 1rem;
+        }
+        &--button{
+            width: 4rem;
+            aspect-ratio: 1/1;
+            background: map-get(variables.$headerVars, "background");
+            border: none;
+            border-radius: 50%;
+            @include mixins.flexBox;
+
+            &-icon{
+                font-size: 120%;
+                color: map-get(variables.$headerVars, "color");
+            }
+        }
+    }
+    &__buttons{
+        width: 100%;
+        @include mixins.flexBox;
+        gap: 1.4rem;
+        padding: 1rem;
+
+        &--button{
+            background: none;
+            border: none;
+            font-size: 100%;
+            font-weight: 600;
+            color: rgba(map-get(variables.$baseVars, "color"), 0.8);
+        }
+    }
+}

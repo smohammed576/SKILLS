@@ -3,8 +3,16 @@
 
 body{
     min-height: 100vh;
-    background: map-get(variables.$baseVars, "background");
+    background: map-get(variables.$accentVars, "background");
     color: map-get(variables.$baseVars, "color");
     font-family: map-get(variables.$baseVars, "font");
     font-size: 2rem;
+}
+
+.main{
+    @include mixins.flexBox;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 10rem;
 }

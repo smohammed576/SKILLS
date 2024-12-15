@@ -1,0 +1,24 @@
+{
+    "header": [
+        {
+            "name": "home",
+            "class": "fa-solid fa-house",
+            "link": "/"
+        },
+        {
+            "name": "attractions",
+            "class": "fa-solid fa-landmark",
+            "link": "/attractions"
+        },
+        {
+            "name": "map",
+            "class": "fa-solid fa-map",
+            "link": "/map"
+        },
+        {
+            "name": "help",
+            "class": "fa-solid fa-question",
+            "link": "/help"
+        }
+    ]
+}

@@ -3,3 +3,15 @@ $baseVars: (
     "color": black,
     "font": sans-serif
 );
+
+$headerVars: (
+    "background": #6000ad,
+    "color": rgb(245, 241, 241)
+);
+
+$accentVars: (
+    "background": #ecead9,
+    "accent": #6000ad,
+    "color": #221f20,
+    "gradient": linear-gradient(to right, #6000ad, #c9013b)
+);
