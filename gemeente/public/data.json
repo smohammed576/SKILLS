@@ -20,5 +20,69 @@
             "class": "fa-solid fa-question",
             "link": "/help"
         }
+    ],
+    "attractions": [
+        {
+            "id": 0,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        },
+        {
+            "id": 1,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        },
+        {
+            "id": 2,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        },
+        {
+            "id": 3,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        },
+        {
+            "id": 4,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        },
+        {
+            "id": 5,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        },
+        {
+            "id": 6,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        },
+        {
+            "id": 7,
+            "name": "Place",
+            "image": "https://top20.amsterdam/images/amsterdam-highlights.jpg",
+            "location": "Amsterdam"
+        }
+    ],
+    "options": [
+        {
+            "title": "Contact us",
+            "class": "fa-solid fa-phone help__options--option-icon"
+        },
+        {
+            "title": "Questions",
+            "class": "fa-solid fa-question help__options--option-icon"
+        },
+        {
+            "title": "Mail us",
+            "class": "fa-solid fa-envelope help__options--option-icon"
+        }
     ]
 }

@@ -1,0 +1,55 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.attractions{
+    width: 100%;
+    margin-bottom: 10rem;
+
+    &__title{
+        padding: 2rem;
+    }
+
+    &__list{
+        width: 100%;
+        @include mixins.flexBox;
+        gap: 3rem;
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+}
+
+.attraction{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 16rem;
+    background: map-get(variables.$accentVars, "background");
+    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+
+    &__image{
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    &__wrapper{
+        padding: 1rem;
+    }
+
+    &__name{
+        font-size: 100%;
+    }
+    
+    &__location{
+        font-size: 80%;
+        @include mixins.flexBox;
+        gap: 0.4rem;
+        width: 100%;
+
+        &--icon{
+            font-size: 90%;
+        }
+    }
+}
