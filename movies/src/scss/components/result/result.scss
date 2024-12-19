@@ -1,0 +1,238 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.result{
+    @include mixins.flexBox;
+    flex-direction: column;
+    width: 100%;
+
+    &__figure{
+        width: 100%;
+        height: 100%;
+        @include mixins.flexBox;
+
+        &--image{
+            width: 100%;
+            height: 35rem;
+            object-fit: cover;
+        }
+    }
+
+    &__details{
+        width: 100%;
+        box-shadow: 0rem -2rem 5rem 4rem rgba(map-get(variables.$baseVars, "background"), 1);
+        padding: 0 2rem 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: 2rem;
+
+        &--span{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        &--wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 1.8rem;
+        }
+        &--title{
+            color: map-get(variables.$accentVars, "white");
+        }
+        &--info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 0.4rem;
+
+            &-wrapper{
+                @include mixins.flexBox;
+                gap: 0.4rem;
+                font-size: 85%;
+            }
+            &-middledot{
+                color: map-get(variables.$accentVars, "lightgrey");
+            }
+            &-director{
+                color: map-get(variables.$accentVars, "whiteish");
+                font-size: 115%;
+            }
+        }
+        &--figure{
+            
+            &-image{
+                width: 12.5rem;
+                object-fit: cover;
+                border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+                border-radius: 0.4rem;
+            }
+        }
+
+        &--description{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 0.8rem;
+
+            &-tagline{
+                font-weight: 400;
+                font-size: 95%;
+                text-transform: uppercase;
+            }
+            &-text{
+                font-size: 95%;
+            }
+        }
+    }
+
+    &__rating{
+        border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+        border-left: 0;
+        border-right: 0;
+        width: 100%;
+        padding: 1rem;
+        @include mixins.flexBox;
+        flex-direction: column;
+        gap: 0.6rem;
+
+        &--title{
+            font-size: 90%;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        &--rate{
+            color: map-get(variables.$accentVars, "whiteish");   
+        }
+    }
+
+    &__credits{
+
+        &--wrapper{
+            @include mixins.flexBox;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        &--buttons{
+            background: black;
+            padding: 0.2rem;
+            @include mixins.flexBox;
+            border-radius: 0.6rem;
+            
+            &-button{
+                background: none;
+                color: map-get(variables.$baseVars, "color");
+                border: none;
+                padding: 0.3rem 0.8rem;
+                font-weight: 600;
+            }
+            &-active{
+                background: map-get(variables.$accentVars, "lightgrey");
+                color: map-get(variables.$accentVars, "white");
+                border-radius: 0.6rem;
+            }
+        }
+
+        &--cast{
+            border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+            border-left: 0;
+            border-right: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            list-style: none;
+        }
+    }
+
+    &__cast{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        &--figure{
+            padding: 0.4rem;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            width: 100%;
+
+            &-image{
+                width: 5rem;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                border-radius: 1rem;
+                padding: 0.2rem;
+            }
+        }
+        &--wrapper{
+            width: 100%;
+            border-bottom: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+            padding: 0.4rem;
+        }
+
+        &--name{
+            width: 33rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &--character{
+            width: 33rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 90%;
+            color: map-get(variables.$accentVars, "lightgrey");
+        }
+    }
+
+    &__similar{
+        padding: 3rem 0 2rem 2rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: 1rem;
+
+        &--title{
+            font-size: 90%;
+            font-weight: 400;
+        }
+
+        &--wrapper{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            overflow: hidden;
+            overflow-x: scroll;
+
+            &::-webkit-scrollbar{
+                display: none
+            }
+        }
+
+        &--movie{
+            @include mixins.flexBox;
+            &-image{
+                width: 10rem;
+                border-radius: 0.4rem;
+                border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+            }
+        }
+    }
+}
