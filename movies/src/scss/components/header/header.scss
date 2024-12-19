@@ -1,0 +1,9 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.header{
+    background: blue;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}

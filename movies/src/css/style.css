@@ -16,4 +16,27 @@ body {
   font-size: 2rem;
 }
 
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 4rem 0;
+}
+
+.header {
+  background: blue;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.navigation {
+  position: fixed;
+  bottom: 0;
+  background: blue;
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */

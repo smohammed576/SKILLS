@@ -1,0 +1,9 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.navigation{
+    position: fixed;
+    bottom: 0;
+    background: blue;
+    width: 100%;
+}

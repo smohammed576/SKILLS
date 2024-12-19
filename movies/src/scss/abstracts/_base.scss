@@ -8,3 +8,10 @@ body{
     font-family: map-get(variables.$baseVars, "font");
     font-size: 2rem;
 }
+
+.main{
+    @include mixins.flexBox;
+    flex-direction: column;
+    width: 100%;
+    margin: 4rem 0;
+}

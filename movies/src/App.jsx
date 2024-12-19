@@ -1,7 +1,15 @@
+import { Outlet } from "react-router-dom";
+import Header from "./Components/Header/Header";
+import Navigation from "./Components/Navigation/Navigation";
+
 function App(){
   return(
     <>
-    app
+      <Header/>
+      <main className="main">
+        <Outlet/>
+      </main>
+      <Navigation/>
     </>
   );
 }
