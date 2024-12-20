@@ -2,8 +2,12 @@
 @use "../../abstracts/mixins";
 
 .header{
-    background: blue;
+    background: map-get(variables.$accentVars, "black");
     position: fixed;
     width: 100%;
     top: 0;
+    @include mixins.flexBox;
+    padding: 1rem;
+    color: map-get(variables.$accentVars, "white");
+    font-size: 90%;
 }

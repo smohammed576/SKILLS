@@ -4,9 +4,7 @@ import Navigation from "./Components/Navigation/Navigation";
 function App(){
   return(
     <>
-      <main className="main">
-        <Outlet/>
-      </main>
+      <Outlet/>
       <Navigation/>
     </>
   );

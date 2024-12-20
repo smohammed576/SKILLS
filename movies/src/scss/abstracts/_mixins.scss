@@ -1,5 +1,12 @@
+@use "variables";
+
 @mixin flexBox{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin movie{
+    border-radius: 0.4rem;
+    border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.4);
 }

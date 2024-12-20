@@ -13,5 +13,5 @@ body{
     @include mixins.flexBox;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 8rem;
+    margin: 8rem 0;
 }

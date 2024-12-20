@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import DataContext from "./hooks/context/DataContext";
 import Find from "./Components/Find/Find";
+import Header from "./Components/Header/Header";
 
 function Search(){
     const ref = useRef();
@@ -16,13 +17,20 @@ function Search(){
         setName(ref.current.value);
     }
     return(
-        <section className="search">
-            <form onSubmit={(event) => {searchInput(event)}}>
-                <input ref={ref} type="text" className="search__input" />
-                <input type="submit" className="search__submit" />
-            </form>
-            <Find/>
-        </section>
+        <>
+            <Header title="Search"/>
+            <main className="main">
+                <section className="search">
+                    <form onSubmit={(event) => {searchInput(event)}}>
+                        <input ref={ref} type="text" className="search__input" />
+                        <button className="search__submit" type="submit">
+                            <i className="fa-solid fa-magnifying-glass search__submit--icon"></i>
+                        </button>
+                    </form>
+                    <Find/>
+                </section>
+            </main>
+        </>
     );
 }
 

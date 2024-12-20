@@ -1,0 +1,68 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.search{
+    width: 100%;
+    @include mixins.flexBox;
+    flex-direction: column;
+
+    &__input{
+        background: map-get(variables.$accentVars, "lightgrey");
+        border: none;
+        padding: 0.4rem;
+        font-size: 100%;
+        color: map-get(variables.$baseVars, "color");
+        border-radius: 0.4rem 0 0 0.4rem;
+        
+        &:focus{
+            outline: none;
+            background: map-get(variables.$accentVars, "white");
+            color: map-get(variables.$accentVars, "black");
+        }
+    }
+
+    &__submit{
+        background: map-get(variables.$accentVars, "lightgrey");
+        border: none;
+        padding: 0.4rem;
+        font-size: 100%;
+        color: map-get(variables.$baseVars, "color");
+        border-radius: 0 0.4rem 0.4rem 0;
+    }
+
+    &__results{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        padding: 1rem 0 0 2rem;
+    }
+}
+
+.results{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.4);
+
+    &__image{
+        width: 7rem;
+        border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.4);
+        border-radius: 0.4rem;
+    }
+
+    &__link{
+        display: inline;
+        color: map-get(variables.$baseVars, "color");
+        text-decoration: none;
+
+        &--title{
+            display: inline;
+            color: map-get(variables.$accentVars, "white");
+        }
+    }
+}

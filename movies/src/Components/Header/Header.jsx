@@ -1,7 +1,9 @@
-function Header(){
+function Header(props){
     return(
         <header className="header">
-            movies
+            <h2 className="header__title">
+                {props.title}
+            </h2>
         </header>
     );
 }
