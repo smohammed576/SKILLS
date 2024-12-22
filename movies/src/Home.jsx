@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Header from "./Components/Header/Header";
 
 function Home(){
     const [nowplaying, setNowplaying] = useState([]);
@@ -23,16 +24,16 @@ function Home(){
 
     const dataSets = array?.map((value, index) => {
         const sets = value?.results?.map(movie => 
-            <figure className="result__similar--movie" key={movie.id}>
-                <a href={`result/${movie.id}`} className="result__similar--movie-link">
-                    <img src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Begrippenlijst.svg'} alt={movie.title} className="result__similar--movie-image" />
+            <figure className="home__list--movie" key={movie.id}>
+                <a href={`result/${movie.id}`} className="home__list--movie-link">
+                    <img src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Begrippenlijst.svg'} alt={movie.title} className="home__list--movie-image" />
                 </a>
             </figure>
         );
         return(
-            <div className="result__similar" key={index}>
-                <h3 className="result__similar--title">{names[index]}</h3>
-                <span className="result__similar--wrapper">
+            <div className="home__list" key={index}>
+                <h3 className="home__list--title">{names[index]}</h3>
+                <span className="home__list--wrapper">
                     {sets}
                 </span>
             </div>
@@ -42,7 +43,12 @@ function Home(){
 
     return(
         <>
-        {dataSets}
+        <Header title="Movies"/>
+        <main className="main">
+            <section className="home">
+                {dataSets}
+            </section>
+        </main>
         </>
     );
 }

@@ -10,4 +10,5 @@
     padding: 1rem;
     color: map-get(variables.$accentVars, "white");
     font-size: 90%;
+    z-index: 1000;
 }

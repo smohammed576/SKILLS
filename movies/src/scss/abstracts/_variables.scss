@@ -1,7 +1,7 @@
 $baseVars: (
     "background": #14171C,
     "color": #99AABB,
-    "font": sans-serif
+    "font": "freight-sans-pro"
 );
 
 $accentVars: (
@@ -11,5 +11,10 @@ $accentVars: (
     "orange": #F27405,
     "whiteish": #BBCCDD,
     "white": white,
-    "black": black
+    "black": black,
+    "blue": #40bcf4
+);
+
+$moviesVars: (
+    "border": 0.01rem solid rgba(#556678, 0.6)
 );

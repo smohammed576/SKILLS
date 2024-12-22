@@ -9,22 +9,126 @@
     &__figure{
         width: 100%;
         height: 100%;
-        @include mixins.flexBox;
 
         &--image{
             width: 100%;
             height: 35rem;
             object-fit: cover;
+
+            &-options{
+                filter: blur(2rem);
+            }
+        }
+
+        &--wrapper{
+            width: 100%;
+            position: absolute;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        &--button{
+            width: 4rem;
+            aspect-ratio: 1/1;
+            @include mixins.flexBox;
+            border-radius: 50%;
+            border: none;
+            background: rgba(map-get(variables.$accentVars, "black"), 0.2);
+            color: map-get(variables.$accentVars, "white");
+            font-size: 100%;
+
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
+    &__options{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+        @include mixins.flexBox;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+
+        &--info{
+            width: 100%;
+            @include mixins.flexBox;
+            flex-direction: column;
+
+            &-title{
+                color: map-get(variables.$accentVars, "white");
+            }
+        }
+
+        &--list{
+            border-radius: 1rem;
+            background: map-get(variables.$accentVars, "grey");
+            width: 100%;
+            @include mixins.flexBox;
+            flex-direction: column;
+            list-style: none;
+        }
+
+        &--status{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            padding: 1rem;
+
+            &-wrapper{
+                @include mixins.flexBox;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            &-icon{
+                font-size: 200%;
+            }
+        }
+
+        &--item{
+            width: 100%;
+            @include mixins.flexBox;
+            flex-direction: column;
+            padding: 1rem;
+            border-top: map-get(variables.$moviesVars, "border");
+            border-color: map-get(variables.$baseVars, "background");
+
+            &-wrapper{
+                width: 100%;
+                @include mixins.flexBox;
+                font-size: 150%;
+            }
+        }
+
+        &--exit{
+            width: 100%;
+            background: map-get(variables.$accentVars, "grey");
+            padding: 2rem;
+            border-radius: 1rem;
+            border: none;
+            color: map-get(variables.$baseVars, "color");
+            font-weight: 600;
+            font-size: 100%;
         }
     }
 
     &__details{
         width: 100%;
-        box-shadow: 0rem -2rem 5rem 4rem rgba(map-get(variables.$baseVars, "background"), 1);
+        box-shadow: 0rem -1rem 4rem 4rem rgba(map-get(variables.$baseVars, "background"), 1);
         padding: 0 2rem 1rem 2rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         align-items: start;
         gap: 2rem;
 
@@ -62,22 +166,22 @@
             &-director{
                 color: map-get(variables.$accentVars, "whiteish");
                 font-size: 115%;
+                text-decoration: none;
+                font-weight: 600;
             }
         }
         &--figure{
-            
             &-image{
                 width: 12.5rem;
                 object-fit: cover;
-                border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
-                border-radius: 0.4rem;
+                @include mixins.movie;
             }
         }
 
         &--description{
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: start;
             align-items: start;
             gap: 0.8rem;
 
@@ -89,11 +193,26 @@
             &-text{
                 font-size: 95%;
             }
+            
+            &-limit{
+                height: 10rem;
+                overflow: hidden;
+                position: relative;
+                
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    background: rgba(map-get(variables.$baseVars, "background"), 0.7);
+                    height: 2rem;
+                    bottom: 0;
+                }
+            }
         }
     }
 
     &__rating{
-        border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+        border: map-get(variables.$moviesVars, "border");
         border-left: 0;
         border-right: 0;
         width: 100%;
@@ -142,7 +261,7 @@
         }
 
         &--cast{
-            border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+            border: map-get(variables.$moviesVars, "border");
             border-left: 0;
             border-right: 0;
             width: 100%;
@@ -177,7 +296,7 @@
         }
         &--wrapper{
             width: 100%;
-            border-bottom: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+            border-bottom: map-get(variables.$moviesVars, "border");
             padding: 0.4rem;
         }
 
@@ -186,6 +305,8 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: map-get(variables.$baseVars, "color");
+            text-decoration: none;
         }
 
         &--character{
@@ -230,8 +351,7 @@
             @include mixins.flexBox;
             &-image{
                 width: 10rem;
-                border-radius: 0.4rem;
-                border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.9);
+                @include mixins.movie;
             }
         }
     }

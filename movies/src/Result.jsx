@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Result(){
     const [resultdata, setResultdata] = useState([]);
     const [creditdata, setCreditdate] = useState([]);
     const [similardata, setSimilardata] = useState([]);
     const [displaylist, setDisplaylist] = useState("Cast");
+    const [displaytext, setDisplaytext] = useState(false);
+    const [displayoptions, setDisplayoptions] = useState(false);
+    const navigate = useNavigate();
     const {id} = useParams();
     const ref = useRef()
     useEffect(() => {
@@ -21,9 +24,6 @@ function Result(){
         })();
     }, []);
 
-    console.log(resultdata);
-    console.log(creditdata);
-    console.log(similardata);
     const directed = creditdata?.crew?.find((director) => director.job === "Director") ?? null;
 
     const castSets = creditdata?.cast?.map(member => 
@@ -32,7 +32,7 @@ function Result(){
                 <img src={member.profile_path ? `https://image.tmdb.org/t/p/original${member.profile_path}` : 'https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Begrippenlijst.svg'} alt={member.name} className="result__cast--figure-image" />
             </figure>
             <div className="result__cast--wrapper">
-                <p className="result__cast--name">{member.name}</p>
+                <a href={`/actor/${member.id}`} className="result__cast--name">{member.name}</a>
                 <p className="result__cast--character">{member.character}</p>
             </div>
         </li>
@@ -54,6 +54,10 @@ function Result(){
         setDisplaylist(event.target.innerText);
     }
 
+    function displayClick(){
+        setDisplaytext(value => !value);
+    }
+
     const similarSets = similardata?.results?.map(movie => 
         <figure className="result__similar--movie" key={movie.id}>
             <a href={`/result/${movie.id}`} className="result__similar--movie-link">
@@ -61,12 +65,82 @@ function Result(){
             </a>
         </figure>
     );
+
+    function showOptions(){
+        setDisplayoptions(value => !value);
+    }
     return resultdata && creditdata && directed && castSets && crewSets ? (
         <main className="main">
             <section className="result">
-                <figure className="result__figure">
-                    <img src={`https://image.tmdb.org/t/p/original${resultdata.backdrop_path}`} alt={`${resultdata.original_title} backdrop image`} className="result__figure--image" />
+                <figure onClick={displayoptions ? showOptions : ''} className="result__figure">
+                    <img src={`https://image.tmdb.org/t/p/original${resultdata.backdrop_path}`} alt={`${resultdata.original_title} backdrop image`} className={displayoptions ? 'result__figure--image result__figure--image-options' : 'result__figure--image'} />
+                    <span className="result__figure--wrapper">
+                        <button onClick={() => {navigate(-1)}} className="result__figure--button">
+                            <i className="fa-solid fa-chevron-left result__figure--button-icon"></i>
+                        </button>
+                        <button onClick={showOptions} className="result__figure--button">
+                            <i className="fa-solid fa-ellipsis result__figure--button-icon"></i>
+                        </button>
+                    </span>
                 </figure>
+                {
+                    displayoptions ? 
+                        <div className="result__options">
+                            <article className="result__options--info">
+                                <h3 className="result__options--info-title">{resultdata.title}</h3>
+                                <p className="result__options--info-year">{resultdata.release_date.slice(0, 4)}</p>
+                            </article>
+                            <ul className="result__options--list">
+                                <li className="result__options--status">
+                                    <article className="result__options--status-wrapper">
+                                        <i className="fa-solid fa-eye result__options--status-icon"></i>
+                                        <p className="result__options--status-text">Logged</p>
+                                    </article>
+                                    <article className="result__options--status-wrapper">
+                                        <i className="fa-solid fa-heart result__options--status-icon"></i>
+                                        <p className="result__options--status-text">Liked</p>
+                                    </article>
+                                    <article className="result__options--status-wrapper">
+                                        <i className="fa-regular fa-clock result__options--status-icon"></i>
+                                        <p className="result__options--status-text">Watchlist</p>
+                                    </article>
+                                </li>
+                                <li className="result__options--item">
+                                    <p className="result__options--item-text">Rated</p>
+                                    <span className="result__options--item-wrapper">
+                                        <i className="fa-regular fa-star result__options--item-star"></i>
+                                        <i className="fa-regular fa-star result__options--item-star"></i>
+                                        <i className="fa-regular fa-star result__options--item-star"></i>
+                                        <i className="fa-regular fa-star result__options--item-star"></i>
+                                        <i className="fa-regular fa-star result__options--item-star"></i>
+                                    </span>
+                                </li>
+                                <li className="result__options--item">
+                                    Show your activity
+                                </li>
+                                <li className="result__options--item">
+                                    Review or log again
+                                </li>
+                                <li className="result__options--item">
+                                    Add to lists
+                                </li>
+                                <li className="result__options--item">
+                                    Change poster / backdrop
+                                </li>
+                                <li className="result__options--item">
+                                    Share to Instagram Stories
+                                </li>
+                                <li className="result__options--item">
+                                    Share
+                                </li>
+                            </ul>
+                            <button onClick={showOptions} className="result__options--exit">
+                                Done
+                            </button>
+                        </div>
+                    :
+                    ''
+                }
                 <div className="result__details">
                     <span className="result__details--span">
                         <div className="result__details--wrapper">
@@ -77,7 +151,7 @@ function Result(){
                                     <p className="result__details--info-middledot">·</p>
                                     <p className="result__details--info-directed">DIRECTED BY</p>
                                 </span>
-                                <h3 className="result__details--info-director">{directed?.name}</h3>
+                                <a href={`/actor/${directed?.id}`} className="result__details--info-director">{directed?.name}</a>
                             </article>
                             <p className="result__details--runtime">{resultdata.runtime} min</p>
                         </div>
@@ -85,7 +159,7 @@ function Result(){
                             <img src={`https://image.tmdb.org/t/p/original${resultdata.poster_path}`} alt={`${resultdata.original_title} cover`} className="result__details--figure-image" />
                         </figure>
                     </span>
-                    <article className="result__details--description">
+                    <article onClick={displayClick} className={displaytext ? 'result__details--description' : 'result__details--description result__details--description-limit'}>
                         <h3 className="result__details--description-tagline">{resultdata.tagline}</h3>
                         <p className="result__details--description-text">{resultdata.overview}</p>
                     </article>

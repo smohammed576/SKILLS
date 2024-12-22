@@ -1,0 +1,28 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.rated{
+    width: 23%;
+
+    &__link{
+
+        &--image{
+            width: 100%;
+            @include mixins.movie;
+        }
+    }
+
+    &__rating{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 0.2rem;
+        font-size: 40%;
+
+        &--heart{
+            margin-left: 0.4rem;
+            font-size: 105%;
+        }
+    }
+}

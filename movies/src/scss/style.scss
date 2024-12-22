@@ -2,6 +2,10 @@
 @use "abstracts/base";
 @use "components/header/header.scss";
 @use "components/navigation/navigation.scss";
+@use "components/home/home.scss";
 @use "components/search/search.scss";
 @use "components/result/result.scss";
 @use "components/profile/profile.scss";
+@use "components/rated/rated.scss";
+@use "components/bigdisplay/bigdisplay.scss";
+@use "components/person/person.scss";

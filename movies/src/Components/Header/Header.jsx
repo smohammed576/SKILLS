@@ -1,9 +1,10 @@
-function Header(props){
+function Header({title, children}){
     return(
         <header className="header">
             <h2 className="header__title">
-                {props.title}
+                {title}
             </h2>
+            {children}
         </header>
     );
 }

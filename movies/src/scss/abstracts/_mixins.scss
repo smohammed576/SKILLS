@@ -8,5 +8,5 @@
 
 @mixin movie{
     border-radius: 0.4rem;
-    border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.4);
+    border: map-get(variables.$moviesVars, "border");
 }

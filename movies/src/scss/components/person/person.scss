@@ -1,0 +1,148 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.actor{
+    width: 100%;
+    margin-top: 5rem;
+    background: map-get(variables.$accentVars, "grey");
+    margin-bottom: 10rem;
+
+    &__info{
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        padding: 1rem;
+
+        &--figure{
+            padding: 1rem;
+            position: sticky;
+            top: 6%;
+            &-image{
+                width: 10rem;
+                object-fit: cover;
+                @include mixins.movie;
+            }
+        }
+
+        &--biography{
+            font-size: 90%;
+            padding: 1rem;
+
+            &-limit{
+                height: 20rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    top: 10%;
+                    height: 18rem;
+                    width: 65%;
+                    box-shadow: inset 0 -4rem 2rem -1rem rgba(map-get(variables.$accentVars, "grey"), 0.9);
+                }
+            }
+        }
+    }
+
+    &__amount{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 80%;
+        width: 100%;
+        padding: 1rem 1.6rem;
+        border-top: map-get(variables.$moviesVars, "border");
+
+        &--text{
+            text-transform: uppercase;
+        }
+
+        &--seen{
+            background: none;
+            border: none;
+            @include mixins.flexBox;
+            gap: 0.6rem;
+            color: map-get(variables.$accentVars, "blue");
+
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
+    // ADD genres and shit uheij
+
+    &__movies{
+        width: 100%;
+        @include mixins.flexBox;
+        flex-direction: column;
+
+        &--wrapper{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+            background: map-get(variables.$baseVars, "background");
+            padding: 1rem 1.6rem;
+        }
+
+        &--more{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            width: 100%;
+            background: map-get(variables.$baseVars, "background");
+            padding: 1rem 1.6rem;
+
+            &-link{
+                text-decoration: none;
+                color: map-get(variables.$baseVars, "color");
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            &-icon{
+                font-size: 80%;
+            }
+        }
+    }
+
+    &__movie{
+        @include mixins.flexBox;
+        &--image{
+            width: 8.7rem;
+            object-fit: cover;
+            @include mixins.movie;
+        }
+    }
+
+    &__films{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+        margin-top: 6rem;
+    }
+
+    &__film{
+        width: 9rem;
+
+        &--link{
+
+            &-image{
+                width: 100%;
+                object-fit: cover;
+                @include mixins.movie;
+            }
+        }
+    }
+}

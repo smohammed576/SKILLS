@@ -5,6 +5,7 @@
     width: 100%;
     @include mixins.flexBox;
     flex-direction: column;
+    margin-top: 8rem;
 
     &__input{
         background: map-get(variables.$accentVars, "lightgrey");
@@ -47,11 +48,11 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border-bottom: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.4);
+    border-bottom: map-get(variables.$moviesVars, "border");
 
     &__image{
         width: 7rem;
-        border: 0.01rem solid rgba(map-get(variables.$accentVars, "lightgrey"), 0.4);
+        border: map-get(variables.$moviesVars, "border");
         border-radius: 0.4rem;
     }
 
