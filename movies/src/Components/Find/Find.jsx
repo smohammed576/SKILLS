@@ -5,7 +5,8 @@ function Find(){
     const {data, name} = useContext(DataContext);
     const [results, setResults] = useState([]);
     const [creditsdata, setCreditsdata] = useState([]);
-    const [id, setId] = useState(null);
+    const [id, setId] = useState();
+    const [directordata, setDirectordata] = useState([]);
     
     useEffect(() => {
         if(!name || name == null){
@@ -14,8 +15,18 @@ function Find(){
         setResults(data);
     }, [name, data]);
 
-    console.log(id);
-    console.log(creditsdata)
+    // useEffect(() => {
+    //     if(!id){
+    //         return;
+    //     }
+    //     (async () => {
+    //         const [response] = await Promise.all([
+    //             fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=13631cc9bf997aabaa47ab22c3ee1f67&append_to_response=credits`).then(response => response.json())
+    //         ])
+    //         console.log(response);
+    //         directordata.push(response);
+    //     })();
+    // }, [id])
     const resultSets = results?.results?.map((result, index) => {
         return(
             <article className="results" key={index}>

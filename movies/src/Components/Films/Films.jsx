@@ -4,17 +4,19 @@ import Bigdisplay from "../Bigdisplay/Bigdisplay";
 import DataContext from "../../hooks/context/DataContext";
 
 function Films(){
-    const {filmsdata, favoritedata, filmsdisplay, setFilmsdisplay} = useContext(DataContext);
+    const {profiledata, filmsdisplay, setFilmsdisplay} = useContext(DataContext);
     const [films, setFilms] = useState([]);
     const [favorite, setFavorite] = useState([]);
 
+    console.log(profiledata)
     useEffect(() => {
-        if(!filmsdata || !favoritedata){
+        if(!profiledata){
             return;
         }
-        setFilms(filmsdata.results?.sort((a, b) => new Date(b.release_date) - new Date(a.release_date)));
-        setFavorite(favoritedata.results?.map(movie => movie.id));
-    }, [filmsdata]);
+        setFilms(profiledata["rated/movies"]?.results?.sort((a, b) => new Date(b.release_date) - new Date(a.release_date)));
+        setFavorite(profiledata["favorite/movies"]?.results?.map(movie => movie.id));
+    }, [profiledata]);
+    
 
     const ratedSets = films?.map(movie => {
         const ratingAmount = movie.rating / 2;

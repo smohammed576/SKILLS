@@ -1,33 +1,26 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { DetailsSets, GenreSets, ReleaseSets } from "./Components/Sets/Sets";
+import DataContext from "./hooks/context/DataContext";
 
 function Result(){
-    const [resultdata, setResultdata] = useState([]);
-    const [creditdata, setCreditdate] = useState([]);
-    const [similardata, setSimilardata] = useState([]);
     const [displaylist, setDisplaylist] = useState("Cast");
     const [displaytext, setDisplaytext] = useState(false);
     const [displayoptions, setDisplayoptions] = useState(false);
     const navigate = useNavigate();
     const {id} = useParams();
-    const ref = useRef()
+    const {moviedata, setId} = useContext(DataContext);
     useEffect(() => {
-        (async () => {
-            const [response, creditResponse, similarResponse] = await Promise.all([
-                fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=13631cc9bf997aabaa47ab22c3ee1f67`).then(response => response.json()),
-                fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=13631cc9bf997aabaa47ab22c3ee1f67`).then(response => response.json()),
-                fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?&api_key=13631cc9bf997aabaa47ab22c3ee1f67`).then(response => response.json())
-            ]);
-            setResultdata(response);
-            setCreditdate(creditResponse);
-            setSimilardata(similarResponse)
-        })();
-    }, []);
+        if(!id){
+            return;
+        }
+        setId(id);
+    }, [id]);
 
-    const directed = creditdata?.crew?.find((director) => director.job === "Director") ?? null;
+    const directed = moviedata?.credits?.crew?.find((director) => director.job === "Director") ?? null;
 
-    const castSets = creditdata?.cast?.map(member => 
-        <li className="result__cast" key={member.id}>
+    const castSets = moviedata?.credits?.cast?.map(member => 
+        <article className="result__cast" key={member.id}>
             <figure className="result__cast--figure">
                 <img src={member.profile_path ? `https://image.tmdb.org/t/p/original${member.profile_path}` : 'https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Begrippenlijst.svg'} alt={member.name} className="result__cast--figure-image" />
             </figure>
@@ -35,11 +28,11 @@ function Result(){
                 <a href={`/actor/${member.id}`} className="result__cast--name">{member.name}</a>
                 <p className="result__cast--character">{member.character}</p>
             </div>
-        </li>
+        </article>
     );
 
-    const crewSets = creditdata?.crew?.map((member, index) => 
-        <li className="result__cast" key={index}>
+    const crewSets = moviedata?.credits?.crew?.map((member, index) => 
+        <article className="result__cast" key={index}>
             <figure className="result__cast--figure">
                 <img src={member.profile_path ? `https://image.tmdb.org/t/p/original${member.profile_path}` : 'https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Begrippenlijst.svg'} alt={member.name} className="result__cast--figure-image" />
             </figure>
@@ -47,18 +40,19 @@ function Result(){
                 <p className="result__cast--name">{member.name}</p>
                 <p className="result__cast--character">{member.job}</p>
             </div>
-        </li>
+        </article>
     );
 
     function displayCredits(event){
         setDisplaylist(event.target.innerText);
+        setId(id);
     }
 
     function displayClick(){
         setDisplaytext(value => !value);
     }
 
-    const similarSets = similardata?.results?.map(movie => 
+    const similarSets = moviedata?.recommendations?.results?.map(movie => 
         <figure className="result__similar--movie" key={movie.id}>
             <a href={`/result/${movie.id}`} className="result__similar--movie-link">
                 <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} className="result__similar--movie-image" />
@@ -69,11 +63,11 @@ function Result(){
     function showOptions(){
         setDisplayoptions(value => !value);
     }
-    return resultdata && creditdata && directed && castSets && crewSets ? (
+    return moviedata && directed && castSets && crewSets ? (
         <main className="main">
             <section className="result">
-                <figure onClick={displayoptions ? showOptions : ''} className="result__figure">
-                    <img src={`https://image.tmdb.org/t/p/original${resultdata.backdrop_path}`} alt={`${resultdata.original_title} backdrop image`} className={displayoptions ? 'result__figure--image result__figure--image-options' : 'result__figure--image'} />
+                <figure onClick={displayoptions ? showOptions : null} className="result__figure">
+                    <img src={`https://image.tmdb.org/t/p/original${moviedata?.backdrop_path}`} alt={`${moviedata?.original_title} backdrop image`} className={displayoptions ? 'result__figure--image result__figure--image-options' : 'result__figure--image'} />
                     <span className="result__figure--wrapper">
                         <button onClick={() => {navigate(-1)}} className="result__figure--button">
                             <i className="fa-solid fa-chevron-left result__figure--button-icon"></i>
@@ -87,8 +81,8 @@ function Result(){
                     displayoptions ? 
                         <div className="result__options">
                             <article className="result__options--info">
-                                <h3 className="result__options--info-title">{resultdata.title}</h3>
-                                <p className="result__options--info-year">{resultdata.release_date.slice(0, 4)}</p>
+                                <h3 className="result__options--info-title">{moviedata?.title}</h3>
+                                <p className="result__options--info-year">{moviedata?.release_date.slice(0, 4)}</p>
                             </article>
                             <ul className="result__options--list">
                                 <li className="result__options--status">
@@ -144,45 +138,53 @@ function Result(){
                 <div className="result__details">
                     <span className="result__details--span">
                         <div className="result__details--wrapper">
-                            <h2 className="result__details--title">{resultdata.original_title}</h2>
+                            <h2 className="result__details--title">{moviedata?.original_title}</h2>
                             <article className="result__details--info">
                                 <span className="result__details--info-wrapper">
-                                    <p className="result__details--info-year">{resultdata.release_date.slice(0, 4)}</p>
+                                    <p className="result__details--info-year">{moviedata?.release_date.slice(0, 4)}</p>
                                     <p className="result__details--info-middledot">·</p>
                                     <p className="result__details--info-directed">DIRECTED BY</p>
                                 </span>
                                 <a href={`/actor/${directed?.id}`} className="result__details--info-director">{directed?.name}</a>
                             </article>
-                            <p className="result__details--runtime">{resultdata.runtime} min</p>
+                            <p className="result__details--runtime">{moviedata?.runtime} min</p>
                         </div>
                         <figure className="result__details--figure">
-                            <img src={`https://image.tmdb.org/t/p/original${resultdata.poster_path}`} alt={`${resultdata.original_title} cover`} className="result__details--figure-image" />
+                            <img src={`https://image.tmdb.org/t/p/original${moviedata?.poster_path}`} alt={`${moviedata?.original_title} cover`} className="result__details--figure-image" />
                         </figure>
                     </span>
                     <article onClick={displayClick} className={displaytext ? 'result__details--description' : 'result__details--description result__details--description-limit'}>
-                        <h3 className="result__details--description-tagline">{resultdata.tagline}</h3>
-                        <p className="result__details--description-text">{resultdata.overview}</p>
+                        <h3 className="result__details--description-tagline">{moviedata?.tagline}</h3>
+                        <p className="result__details--description-text">{moviedata?.overview}</p>
                     </article>
                 </div>
                 <div className="result__rating">
                     <p className="result__rating--title">Rating</p>
-                    <h3 className="result__rating--rate">{Math.floor(resultdata.vote_average * 10)}%</h3>
+                    <h3 className="result__rating--rate">{Math.floor(moviedata?.vote_average * 10)}%</h3>
                 </div>
                 <div className="result__credits">
                     <div className="result__credits--wrapper">
                         <span className="result__credits--buttons">
                             <button onClick={displayCredits} className={displaylist === "Cast" ? "result__credits--buttons-active result__credits--buttons-button" : "result__credits--buttons-button"}>Cast</button>
                             <button onClick={displayCredits} className={displaylist === "Crew" ? "result__credits--buttons-active result__credits--buttons-button" : "result__credits--buttons-button"}>Crew</button>
+                            <button onClick={displayCredits} className={displaylist === "Details" ? "result__credits--buttons-active result__credits--buttons-button" : "result__credits--buttons-button"}>Details</button>
+                            <button onClick={displayCredits} className={displaylist === "Genres" ? "result__credits--buttons-active result__credits--buttons-button" : "result__credits--buttons-button"}>Genres</button>
+                            <button onClick={displayCredits} className={displaylist === "Releases" ? "result__credits--buttons-active result__credits--buttons-button" : "result__credits--buttons-button"}>Releases</button>
                         </span>
                     </div>
-                    <ul className="result__credits--cast">
+                    <div className="result__credits--cast">
                         {
-                            displaylist === "Cast" ?
-                            castSets 
-                            : 
-                            crewSets
+                            displaylist === "Cast" && castSets 
+                            || 
+                            displaylist === "Crew" && crewSets
+                            ||
+                            displaylist === "Details" && <DetailsSets/>
+                            ||
+                            displaylist === "Genres" && <GenreSets/>
+                            ||
+                            displaylist === "Releases" && <ReleaseSets/>
                         }
-                    </ul>
+                    </div>
                 </div>
                 <div className="result__similar">
                     <h3 className="result__similar--title">SIMILAR FILMS</h3>
