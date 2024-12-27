@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Header from "./Components/Header/Header";
+import Header from "../../Components/Header/Header";
 
 function Home(){
     const [nowplaying, setNowplaying] = useState([]);

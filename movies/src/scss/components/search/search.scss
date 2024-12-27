@@ -7,18 +7,86 @@
     flex-direction: column;
     margin-top: 8rem;
 
+    &__navigation{
+        background: map-get(variables.$accentVars, "black");
+        margin-top: 5.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        padding: 0 0 1rem 0;
+
+        &--active{
+            margin: 0;
+            padding: 1.8rem 0;
+        }
+    }
+
+    &__form{
+        @include mixins.flexBox;
+        gap: 1rem;
+        width: 100%;
+        padding: 0 2rem;
+        position: relative;
+    }
+
+    &__cancel{
+        background: none;
+        border: none;
+        color: map-get(variables.$baseVars, "color");
+        font-size: 100%;
+    }
+
+    &__filters{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.4rem;
+        width: 100%;
+        overflow: hidden;
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+
+        &--button{
+            border: none;
+            @include mixins.flexBox;
+            white-space: nowrap;
+            padding: 0.2rem 1rem;
+            background: none;
+            color: map-get(variables.$baseVars, "color");
+            font-weight: 600;
+            font-size: 90%;
+
+            &-active{
+                background: map-get(variables.$accentVars, "green");
+                color: map-get(variables.$accentVars, "white");
+                border-radius: 10rem;
+            }
+        }
+    }
+
     &__input{
         background: map-get(variables.$accentVars, "lightgrey");
         border: none;
-        padding: 0.4rem;
+        padding: 0.4rem 4rem;
         font-size: 100%;
         color: map-get(variables.$baseVars, "color");
-        border-radius: 0.4rem 0 0 0.4rem;
+        border-radius: 0.4rem;
+        width: 100%;
         
         &:focus{
             outline: none;
-            background: map-get(variables.$accentVars, "white");
             color: map-get(variables.$accentVars, "black");
+        }
+
+        &--active{
+            background: map-get(variables.$accentVars, "white");
         }
     }
 
@@ -26,9 +94,14 @@
         background: map-get(variables.$accentVars, "lightgrey");
         border: none;
         padding: 0.4rem;
-        font-size: 100%;
+        font-size: 80%;
         color: map-get(variables.$baseVars, "color");
-        border-radius: 0 0.4rem 0.4rem 0;
+        position: absolute;
+        left: 5%;
+
+        &--active{
+            background: map-get(variables.$accentVars, "white");
+        }
     }
 
     &__results{
@@ -57,7 +130,8 @@
     }
 
     &__link{
-        display: inline;
+        @include mixins.flexBox;
+        gap: 1rem;
         color: map-get(variables.$baseVars, "color");
         text-decoration: none;
 

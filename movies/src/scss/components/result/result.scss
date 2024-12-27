@@ -84,14 +84,28 @@
             width: 100%;
             padding: 1rem;
 
-            &-wrapper{
+            &-button{
                 @include mixins.flexBox;
                 flex-direction: column;
                 gap: 1rem;
+                background: none;
+                border: none;
+                color: map-get(variables.$baseVars, "color");
+                font-family: map-get(variables.$baseVars, "font");
+                font-size: 100%;
             }
 
             &-icon{
                 font-size: 200%;
+            }
+            &-eye{
+                color: map-get(variables.$accentVars, "green");
+            }
+            &-favorite{
+                color: map-get(variables.$accentVars, "orange");
+            }
+            &-watchlist{
+                color: map-get(variables.$accentVars, "blue");
             }
         }
 
@@ -170,6 +184,32 @@
                 font-weight: 600;
             }
         }
+
+        &--video{
+            @include mixins.flexBox;
+            gap: 1rem;
+
+            &-trailer{
+                background: map-get(variables.$accentVars, "lightgrey");
+                border: none;
+                padding: 0.2rem 1rem;
+                border-radius: 0.8rem;
+                @include mixins.flexBox;
+            }
+            &-link{
+                text-decoration: none;
+                color: map-get(variables.$accentVars, "whiteish");
+                font-family: map-get(variables.$baseVars, "font");
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.4rem;
+                font-size: 100%;
+            }
+            &-icon{
+                font-size: 70%;
+            }
+        }
         &--figure{
             &-image{
                 width: 12.5rem;
@@ -233,7 +273,7 @@
     }
 
     &__credits{
-
+        width: 100%;
         &--wrapper{
             @include mixins.flexBox;
             padding: 1rem;
@@ -241,7 +281,7 @@
         }
 
         &--buttons{
-            background: black;
+            background: map-get(variables.$accentVars, "black");
             padding: 0.2rem;
             @include mixins.flexBox;
             border-radius: 0.6rem;
@@ -352,6 +392,82 @@
             &-image{
                 width: 10rem;
                 @include mixins.movie;
+            }
+        }
+    }
+
+    &__item{
+        width: 100%;
+        border-bottom: map-get(variables.$moviesVars, "border");
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 1rem;
+
+        &--link{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            text-decoration: none;
+            color: map-get(variables.$baseVars, "color");
+
+            &-icon{
+                font-size: 80%;
+            }
+        }
+
+        &--title{
+            color: map-get(variables.$accentVars, "lightgrey");
+            text-transform: uppercase;
+            font-size: 90%;
+            padding: 1rem;
+            border-bottom: map-get(variables.$moviesVars, "border");
+            width: 100%;
+        }
+    }
+
+    &__release{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 1rem;
+        border: map-get(variables.$moviesVars, "border");
+        border-left: none;
+        border-right: none;
+        padding: 1rem;
+
+        &--text{
+            width: 30%;
+            font-size: 95%;
+            white-space: nowrap;
+        }
+
+        &--country{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+            font-size: 95%;
+            width: 70%;
+
+            &-image{
+                width: 3rem;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                object-fit: cover;
+                border: map-get(variables.$moviesVars, "border");
+            }
+
+            &-certification{
+                border: map-get(variables.$moviesVars, "border");
+                border-radius: 0.4rem;
+                padding: 0.2rem 0.6rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }

@@ -4,13 +4,14 @@ import './css/style.css';
 import App from './App.jsx';
 import { DataProvider } from './hooks/context/DataContext.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './Home.jsx';
-import Search from './Search.jsx';
-import Profile from './Profile.jsx';
-import Result from './Result.jsx';
 import Films from './Components/Films/Films.jsx';
-import Actor from './Actor.jsx';
 import Movies from './Components/Movies/Movies.jsx';
+import Home from './Pages/Home/Home.jsx';
+import Search from './Pages/Search/Search.jsx';
+import Actor from './Pages/Actor/Actor.jsx';
+import Profile from './Pages/Profile/Profile.jsx';
+import Result from './Pages/Result/Result.jsx';
+import { Genre } from './Components/FilmLists/FilmLists.jsx';
 
 const routes = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const routes = createBrowserRouter([
       {
         path: '/actor/:id/movies',
         element: <Movies/>
+      },
+      {
+        path: '/films/:list/:id',
+        element: <Genre/>
       }
     ]
   }

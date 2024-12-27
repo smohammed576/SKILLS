@@ -1,17 +1,18 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { DetailsSets, GenreSets, ReleaseSets } from "./Components/Sets/Sets";
-import DataContext from "./hooks/context/DataContext";
+import { DetailsSets, GenreSets, ReleaseSets } from "../../Components/Sets/Sets";
+import DataContext from "../../hooks/context/DataContext";
+import Options from "../../Components/Options/Options";
 
 function Result(){
     const [displaylist, setDisplaylist] = useState("Cast");
     const [displaytext, setDisplaytext] = useState(false);
-    const [displayoptions, setDisplayoptions] = useState(false);
     const navigate = useNavigate();
     const {id} = useParams();
-    const {moviedata, setId} = useContext(DataContext);
+    const {moviedata, setId, displayoptions, setDisplayoptions} = useContext(DataContext);
+    console.log(moviedata)
     useEffect(() => {
-        if(!id){
+        if(!id || !moviedata){
             return;
         }
         setId(id);
@@ -37,7 +38,7 @@ function Result(){
                 <img src={member.profile_path ? `https://image.tmdb.org/t/p/original${member.profile_path}` : 'https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Begrippenlijst.svg'} alt={member.name} className="result__cast--figure-image" />
             </figure>
             <div className="result__cast--wrapper">
-                <p className="result__cast--name">{member.name}</p>
+                <a href={`/actor/${member.id}`} className="result__cast--name">{member.name}</a>
                 <p className="result__cast--character">{member.job}</p>
             </div>
         </article>
@@ -59,6 +60,8 @@ function Result(){
             </a>
         </figure>
     );
+    
+    console.log(moviedata?.videos)
 
     function showOptions(){
         setDisplayoptions(value => !value);
@@ -79,61 +82,9 @@ function Result(){
                 </figure>
                 {
                     displayoptions ? 
-                        <div className="result__options">
-                            <article className="result__options--info">
-                                <h3 className="result__options--info-title">{moviedata?.title}</h3>
-                                <p className="result__options--info-year">{moviedata?.release_date.slice(0, 4)}</p>
-                            </article>
-                            <ul className="result__options--list">
-                                <li className="result__options--status">
-                                    <article className="result__options--status-wrapper">
-                                        <i className="fa-solid fa-eye result__options--status-icon"></i>
-                                        <p className="result__options--status-text">Logged</p>
-                                    </article>
-                                    <article className="result__options--status-wrapper">
-                                        <i className="fa-solid fa-heart result__options--status-icon"></i>
-                                        <p className="result__options--status-text">Liked</p>
-                                    </article>
-                                    <article className="result__options--status-wrapper">
-                                        <i className="fa-regular fa-clock result__options--status-icon"></i>
-                                        <p className="result__options--status-text">Watchlist</p>
-                                    </article>
-                                </li>
-                                <li className="result__options--item">
-                                    <p className="result__options--item-text">Rated</p>
-                                    <span className="result__options--item-wrapper">
-                                        <i className="fa-regular fa-star result__options--item-star"></i>
-                                        <i className="fa-regular fa-star result__options--item-star"></i>
-                                        <i className="fa-regular fa-star result__options--item-star"></i>
-                                        <i className="fa-regular fa-star result__options--item-star"></i>
-                                        <i className="fa-regular fa-star result__options--item-star"></i>
-                                    </span>
-                                </li>
-                                <li className="result__options--item">
-                                    Show your activity
-                                </li>
-                                <li className="result__options--item">
-                                    Review or log again
-                                </li>
-                                <li className="result__options--item">
-                                    Add to lists
-                                </li>
-                                <li className="result__options--item">
-                                    Change poster / backdrop
-                                </li>
-                                <li className="result__options--item">
-                                    Share to Instagram Stories
-                                </li>
-                                <li className="result__options--item">
-                                    Share
-                                </li>
-                            </ul>
-                            <button onClick={showOptions} className="result__options--exit">
-                                Done
-                            </button>
-                        </div>
+                        <Options/>
                     :
-                    ''
+                        ''
                 }
                 <div className="result__details">
                     <span className="result__details--span">
@@ -147,7 +98,14 @@ function Result(){
                                 </span>
                                 <a href={`/actor/${directed?.id}`} className="result__details--info-director">{directed?.name}</a>
                             </article>
-                            <p className="result__details--runtime">{moviedata?.runtime} min</p>
+                            <span className="result__details--video">
+                                <button className="result__details--video-trailer">
+                                    <a href={`https://www.youtube.com/watch?v=${moviedata?.videos?.results[0]?.key}`} className="result__details--video-link" target="_BLANK">
+                                    <i className="fa-solid fa-play result__details--video-icon"></i>
+                                    TRAILER</a>
+                                </button>
+                                <p className="result__details--video-runtime">{moviedata?.runtime} min</p>
+                            </span>
                         </div>
                         <figure className="result__details--figure">
                             <img src={`https://image.tmdb.org/t/p/original${moviedata?.poster_path}`} alt={`${moviedata?.original_title} cover`} className="result__details--figure-image" />

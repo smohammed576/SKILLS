@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import Header from "./Components/Header/Header";
+import Header from "../../Components/Header/Header";
 import { useContext, useEffect, useState } from "react";
-import DataContext from "./hooks/context/DataContext";
+import DataContext from "../../hooks/context/DataContext";
 
 function Actor(){
     const [actordata, setActordata] = useState([]);
@@ -12,7 +12,7 @@ function Actor(){
     const [activity, setActivity] = useState();
     const [getUnique, setGetUnique] = useState([]);
     const {id} = useParams();
-    const {filmsdata} = useContext(DataContext);
+    const {profiledata} = useContext(DataContext);
     useEffect(() => {
         (async () => {
             const [response, creditsResponse] = await Promise.all([
@@ -24,11 +24,12 @@ function Actor(){
         })();
     }, []);
 
+    console.log(profiledata)
     useEffect(() => {
-        if(filmsdata?.results){
-            setWatcheddata(filmsdata?.results?.map(movie => movie.id));
+        if(profiledata["rated/movies"]?.results){
+            setWatcheddata(profiledata["rated/movies"]?.results?.map(movie => movie.id));
         }
-    }, [filmsdata]);
+    }, [profiledata]);
     console.log(creditsdata)
     console.log(actordata);
     function displayclick(){

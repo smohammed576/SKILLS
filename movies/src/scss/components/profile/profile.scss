@@ -5,7 +5,7 @@
     width: 100%;
     @include mixins.flexBox;
     flex-direction: column;
-    margin-top: 8rem;
+    margin-top: 10rem;
 
     &__info{
         width: 100%;
@@ -67,6 +67,15 @@
             width: 8rem;
             @include mixins.movie;
         }
+
+        &--rating{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 0.1rem;
+            font-size: 45%;
+        }
     }
 
     &__rated{
@@ -78,5 +87,15 @@
         flex-wrap: wrap;
         padding: 1rem;
         margin-top: 8rem;
+    }
+
+    &__films{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 0.4rem 1rem;
     }
 }

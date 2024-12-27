@@ -62,7 +62,10 @@ function GenreSets(){
             {
                 moviedata?.genres?.map(genre => 
                     <article className="result__item" key={genre.id}>
-                        {genre.name}
+                        <a href={`/films/genres/${genre.id}`} className="result__item--link">
+                            <p className="result__item--link-text">{genre.name}</p>
+                            <i className="fa-solid fa-chevron-right result__item--link-icon"></i>
+                        </a>
                     </article>
                 )
             }
@@ -72,7 +75,10 @@ function GenreSets(){
             {
                 moviedata?.keywords?.keywords?.map(keyword => 
                     <article className="result__item" key={keyword.id}>
-                        {keyword.name}
+                        <a href={`/films/keywords/${keyword.id}`} className="result__item--link">
+                            <p className="result__item--link-text">{keyword.name}</p>
+                            <i className="fa-solid fa-chevron-right result__item--link-icon"></i>
+                        </a>
                     </article>
                 )
             }
@@ -112,16 +118,16 @@ function ReleaseSets(){
                         <>
                             {
                                 newType ? 
-                                <span className="result__item--title">{JSONdata?.releasetypes[data.type - 1]}</span>
+                                <span className="result__item--title" key={index*9347}>{JSONdata?.releasetypes[data.type - 1]}</span>
                                 :
                                 ''
                             }
-                            <article className="result__item" key={index}>
-                                <p className="result__item--text">{new Date(data.release_date).toLocaleDateString('en-UK', {day: 'numeric', month: 'short', year: 'numeric'})}</p> 
-                                <span className="result__item--country">
-                                    <img src={`https://flagsapi.com/${data.iso_3166_1}/flat/64.png`} alt={`${data.iso_3166_1} flag`} className="result__item--country-image" />
-                                    <p className="result__item--country-name">{countriesdata?.countries?.find((country) => country.iso_3166_1 === data.iso_3166_1).english_name}</p>
-                                    <article>{data.certification}</article>
+                            <article className="result__release" key={index}>
+                                <p className="result__release--text">{new Date(data.release_date).toLocaleDateString('en-UK', {day: 'numeric', month: 'short', year: 'numeric'})}</p> 
+                                <span className="result__release--country">
+                                    <img src={`https://countryflagsapi.netlify.app/flag/${data.iso_3166_1}.svg`} alt={`${data.iso_3166_1} flag`} className="result__release--country-image" />
+                                    <p className="result__release--country-name">{data.iso_3166_1 === "US" && "USA" || data.iso_3166_1 === "CZ" && "Czechia" || data.iso_3166_1 === "GB" && "UK" ||  countriesdata?.countries?.find((country) => country.iso_3166_1 === data.iso_3166_1).english_name}</p>
+                                    {data.certification ? <article className="result__release--country-certification">{data.certification}</article> : ''}
                                 </span>
                             </article>
                         </>

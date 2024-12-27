@@ -6,5 +6,49 @@
         "Digital",
         "Physical",
         "TV"
+    ],
+    "filters": [
+        {
+            "name": "Films",
+            "param": "movie"
+        },
+        {
+            "name": "Cast, Crew or Studios",
+            "param": "multi"
+        },
+        {
+            "name": "Members or HQ",
+            "param": "multi"
+        },
+        {
+            "name": "Reviews",
+            "param": "multi"
+        },
+        {
+            "name": "Lists",
+            "param": "collection"
+        },
+        {
+            "name": "Stories",
+            "param": "multi"
+        },
+        {
+            "name": "Journal articles",
+            "param": "multi"
+        },
+        {
+            "name": "Podcast episodes",
+            "param": "multi"
+        },
+        {
+            "name": "All",
+            "param": "multi"
+        }
+    ],
+    "profile": [
+        {
+            "name": "Films",
+            "link": "/profile/films"
+        }
     ]
 }
