@@ -12,6 +12,7 @@ import Actor from './Pages/Actor/Actor.jsx';
 import Profile from './Pages/Profile/Profile.jsx';
 import Result from './Pages/Result/Result.jsx';
 import { Genre } from './Components/FilmLists/FilmLists.jsx';
+import Reviews from './Components/Reviews/Reviews.jsx';
 
 const routes = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const routes = createBrowserRouter([
       {
         path: '/result/:id',
         element: <Result/>
+      },
+      {
+        path: '/result/:id/reviews',
+        element: <Reviews/>
       },
       {
         path: '/actor/:id',

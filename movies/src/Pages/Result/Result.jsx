@@ -18,6 +18,22 @@ function Result(){
         setId(id);
     }, [id]);
 
+    //     const options = {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' }
+    //     }     
+    
+    
+    // useEffect(() => {
+    //     (async () => {
+    //         fetch(`https://www.themoviedb.org/movie/3558-girl-interrupted/remote/rating/details`, options)
+    //             .then((response) => response.json())
+    //             .then(data => {
+    //                 console.log(data)
+    //             })
+    //     })()
+    // }, [])
+
     const directed = moviedata?.credits?.crew?.find((director) => director.job === "Director") ?? null;
 
     const castSets = moviedata?.credits?.cast?.map(member => 
@@ -66,6 +82,12 @@ function Result(){
     function showOptions(){
         setDisplayoptions(value => !value);
     }
+
+    // console.log(moviedata["watch/providers"]?.results["US"])
+
+    // const providersSets = moviedata["watch/providers"]?.results["US"]?.buy?.map(item => 
+    //     <img src={`https://image.tmdb.org/t/p/original${item.logo_path}`} alt={item.provider_name} className="result__providers--image" />
+    // );
     return moviedata && directed && castSets && crewSets ? (
         <main className="main">
             <section className="result">
@@ -116,9 +138,33 @@ function Result(){
                         <p className="result__details--description-text">{moviedata?.overview}</p>
                     </article>
                 </div>
+                {/* <div className="result__providers">
+                    <p className="result__providers--text">Where to watch</p>
+                    <span className="result__providers--wrapper">
+                        {providersSets}
+                    </span>
+                </div> */}
+                {/* GREEN GREY BLUE MEMBERS REVIEWS LISTS icon name amount  */}
                 <div className="result__rating">
                     <p className="result__rating--title">Rating</p>
                     <h3 className="result__rating--rate">{Math.floor(moviedata?.vote_average * 10)}%</h3>
+                </div>
+                <div className="result__status">
+                    <article className="result__status--item result__status--item-green">
+                        <i className="fa-solid fa-eye result__status--item-icon"></i>
+                        <h3 className="result__status--item-title">Members</h3>
+                        <p className="result__status--item-amount">{moviedata?.vote_count}</p>
+                    </article>
+                    <a href={`/result/${id}/reviews`} className="result__status--item result__status--item-grey">
+                        <i className="fa-regular fa-file-lines result__status--item-icon"></i>
+                        <h3 className="result__status--item-title">Reviews</h3>
+                        <p className="result__status--item-amount">{moviedata?.reviews?.total_results}</p>
+                    </a>
+                    <article className="result__status--item result__status--item-blue">
+                        <i className="fa-solid fa-list result__status--item-icon"></i>
+                        <h3 className="result__status--item-title">Lists</h3>
+                        <p className="result__status--item-amount">{moviedata?.lists?.total_results}</p>
+                    </article>
                 </div>
                 <div className="result__credits">
                     <div className="result__credits--wrapper">

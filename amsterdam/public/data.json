@@ -1,0 +1,188 @@
+{
+    "navigation": [
+        {
+            "name": "home",
+            "class": "fa-solid fa-house navigation__item--icon",
+            "path": "/"
+        },
+        {
+            "name": "attractions",
+            "class": "fa-solid fa-place-of-worship navigation__item--icon",
+            "path": "/attractions"
+        },
+        {
+            "name": "map",
+            "class": "fa-solid fa-map-location-dot navigation__item--icon",
+            "path": "/map"
+        },
+        {
+            "name": "help",
+            "class": "fa-solid fa-headset navigation__item--icon",
+            "path": "/help"
+        }
+    ],
+    "attractions": [
+        {
+            "id": 0,
+            "name": "Rijksmuseum",
+            "image": "https://www.rijksmuseum.nl/assets/15f036fb-6bc5-484a-8098-558eb5174ea0?w=1920&h=1080&fx=2554&fy=2005&c=55d11604911192b0a131c58c43ab9ba27a1537e2c9c085e05ce6db8cd1dffc1b",
+            "overview": "Het enorme Rijksmuseum in Amsterdam is de meest bezochte bezienswaardigheid van Amsterdam. Met meer dan 5000 schilderijen vertelt dit museum 800 jaar Nederlandse geschiedenis, waaronder de 17e eeuw, de Gouden Eeuw. Bekijk wereldberoemde schilderijen als de ‘Nachtwacht’ van Rembrandt en het ‘Melkmeisje’ van Johannes Vermeer.",
+            "address": "Museumstraat 1, 1071 XX Amsterdam"
+        },
+        {
+            "id": 1,
+            "name": "Van Gogh Museum",
+            "image": "https://www.vangoghmuseum.nl/assets/f9a7a187-484e-4821-b84a-79c836109029?w=1280&h=720&c=12f8ae08a908d9261f58a6bb1bfaa67e8daf061b56752678819c8c241a881bbe",
+            "overview": "Het museum met de grootste collectie van schilder Vincent Van Gogh. In dit artikel leest u alle informatie om uw bezoek aan het Van Gogh Museum voor te bereiden. In het hoogseizoen zal het vanwege de bezoekerslimiet noodzakelijk zijn uw tickets vooraf te reserveren.",
+            "address": "Museumstraat 6, 1071 DJ Amsterdam"
+        },
+        {
+            "id": 2,
+            "name": "Rondvaart grachten",
+            "image": "https://www.blueboat.nl/wp-content/uploads/2021/08/IMG_9611_low_res-scaled-960x600.jpg",
+            "overview": "De activiteit die absoluut niet mag ontbreken tijdens uw stedentrip Amsterdam is een rondvaart over de grachten. Vanaf het water ziet u pas echt hoe prachtig de Amsterdamse grachtenpanden zijn. Vanaf 16 euro boekt u al een rondvaart, maar u kunt ook kiezen voor speciale themacruises zoals een dinnercruise of romantische candlelight cruise.",
+            "address": "Amsterdam"
+        },
+        {
+            "id": 3,
+            "name": "Heineken Experience",
+            "image": "https://images.musement.com/cover/0100/75/thumb_9974726_cover_header.jpeg",
+            "overview": "De Heineken Experience is gevestigd in de oudste Heineken brouwerij. De rondleiding van deze ongeveer 1,5 uur durende interactieve Heineken Experience vertelt u over de geschiedenis, het brouwproces en marketing rond Nederlands bekende biermerk.",
+            "address": "Stadhouderskade 78, 1072 AE Amsterdam"
+        },
+        {
+            "id": 4,
+            "name": "Red Light District",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Oudezijds_Achterburgwal.jpg/1200px-Oudezijds_Achterburgwal.jpg",
+            "overview": "Het Red Light District van Amsterdam (in Nederlands ‘De Wallen’) is het prostitutiegebied van Amsterdam met meer dan 300 werkplekken voor raamprostitutie. De naam is afkomstig van de vele rode lampen in de ramen van deze werkplekken. De wijk heeft verder veel sekshops, coffeeshops, seksshows en een marihuana museum. De wijk is tegenwoordig een van de belangrijkste toeristische bezienswaardigheden van Amsterdam.",
+            "address": "De Wallen, Amsterdam"
+        },
+        {
+            "id": 5,
+            "name": "Anne Frank Huis",
+            "image": "https://cdn.museum.nl/assets/df6978fa-89ea-49e0-baf3-9f51dda3b15a?w=3000&c=dd3c0af41efa4f9d550ac31a1c3b655c56c7579e20c4f8d3701ed6c2e0d90275",
+            "overview": "Anne Frank, het Joodse meisje dat bekend werd door haar dagboek dat ze heeft geschreven in ‘Het Achterhuis’. In dit museum bezoekt u o.a. de kamer achter de boekenkast waarin zij ondergedoken heeft gezeten. Een van de meest indrukwekkende bezienswaardigheden in Amsterdam. U kunt alléén op de officiële website uw kaarten reserveren. Doe dit tijdig want het museum is vaak uitverkocht.",
+            "address": "Westermarkt 20, 1016 GV Amsterdam"
+        },
+        {
+            "id": 6,
+            "name": "Vondelpark",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Amsterdam%2C_Vondelpark%2C_at_the_pond-2.jpg",
+            "overview": "Het Vondelpark is het grote stadspark van Amsterdam. Het openbare en langgerekte park is gratis te bezoeken en bevat o.a. vijvers, fonteinen, standbeelden, een rozentuin en een theehuis. Geregeld worden er in het Vondelpark concerten en openluchttheater gehouden.",
+            "address": "Vondelpark, Amsterdam"
+        },
+        {
+            "id": 7,
+            "name": "De Dam",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/4/4e/NationaalMonumentVanuitReuzenrad.JPG",
+            "overview": "De Dam is het centrale plein in Amsterdam. U ziet hier het Koninklijk Paleis op de Dam, de Nieuwe Kerk en het Nationale Monument. De belangrijke winkelstraten komen hier uit en aan het met duiven overspoelde plein ligt ook het luxe warenhuis ‘De Bijenkorf’. Daarnaast treft u het wassenbeeldenmuseum Madame Tussaud.",
+            "address": "Dam, Amsterdam"
+        },
+        {
+            "id": 8,
+            "name": "Rembrandthuis",
+            "image": "https://image.parool.nl/228633020/width/2480/het-rembrandthuis-is-na-vier-maanden-verbouwen-weer-open",
+            "overview": "Dit is het voormalige woon,- en werkhuis van Rembrandt van Rijn, waar hij tussen 1639 en 1658 geleefd heeft. In dit schitterende en statige pand met oude meubels, kunst en voorwerpen heeft u het gevoel dat u in dit museum terug gaat in de 17e eeuw.",
+            "address": "Jodenbreestraat 4, 1011 NK Amsterdam"
+        },
+        {
+            "id": 9,
+            "name": "Jordaan",
+            "image": "https://www.amsterdam.net/en/wp-content/uploads/sites/136/jordaan-brouwersgracht-hd.jpg",
+            "overview": "De Jordaan is een typisch Amsterdamse volkswijk in het westelijke deel van het centrum. De wijk werd gebouwd in de 17e eeuw en heeft prachtige grachtenpanden, veel restaurants, winkeltjes en staat bekend om zijn Hollandse muziek. Populair is het winkelgebied van de ‘9 straatjes’. Tijdens uw stedentrip is de Jordaan een leuke wijk om op eigen gelegenheid rond te dwalen.",
+            "address": "Jordaan, Amsterdam"
+        },
+        {
+            "id": 10,
+            "name": "Concertgebouw",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/9/91/Concertgebouw_in_Amsterdam_April_2015.jpg",
+            "overview": "Het indrukwekkende Concertgebouw van Amsterdam behoort, mede vanwege het fantastische geluid, tot een van de beroemdste concertzalen ter wereld. Wilt u een indruk krijgen van dit prachtige pand uit 1888 heeft u twee mogelijkheden: een rondleiding met gids of het bijwonen van een concert.",
+            "address": "Concertgebouwplein 10, 1071 LN Amsterdam"
+        },
+        {
+            "id": 11,
+            "name": "Artis",
+            "image": "https://www.public-transport-holland.com/wp-content/uploads/2018/03/Artis_1.jpg",
+            "overview": "De stadsdierentuin in het centrum van Amsterdam en oudste dierentuin van Nederland. En leuke afwisseling tijdens uw stedentrip. U kunt uw tickets al eenvoudig vooraf reserveren.",
+            "address": "Plantage Kerklaan 38-40, 1018 CZ Amsterdam"
+        },
+        {
+            "id": 12,
+            "name": "Museum Ons' Lieve Heer op Solder",
+            "image": "https://arcam.nl/wp-content/uploads/2021/06/20160027-103-scaled.jpg",
+            "overview": "Een minder toeristische, maar zeer interessante bezienswaardigheid is Museum Ons' Lieve Heer op Solder. Dit is een voormalige schuilkerk, gelegen aan de Oudezijds Voorburgwal 38 in het centrum van Amsterdam. Tickets voor dit verborgen pareltje koopt u eenvoudig online.",
+            "address": "Oudezijds Voorburgwal 38-40, 1012 GD Amsterdam"
+        },
+        {
+            "id": 13,
+            "name": "Begijnhof",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/3/31/Begijnhof%2C_Amsterdam.jpg",
+            "overview": "Het Begijnhof is een hofje dat resteert uit middeleeuws Amsterdam. Oorspronkelijk waren dit de woonhuizen van de ongehuwde en vrome Begijnen en de meeste gevels stammen uit de 17e en 18e eeuw. Het prachtige hof is een oase van rust in de binnenstad en u kunt gratis een blik werpen op een deel van het pleintje. Het andere deel is vanwege privacy van de inwoonsters gesloten.",
+            "address": "Begijnhof 1, Amsterdam"
+        },
+        {
+            "id": 14,
+            "name": "NEMO Science Museum",
+            "image": "https://www.nemosciencemuseum.nl/media/filer_public_thumbnails/filer_public/01/fb/01fbcfde-be54-41b4-9f86-64f78c30005a/nemo_science_museum-foto_digidaan.jpg__1920x0_q85_crop_upscale.jpg",
+            "overview": "NEMO is het science museum van Amsterdam, bedoeld om jongeren enthousiast te maken voor wetenschap en techniek o.a. aan de hand van veel experimentele opstellingen. Een schitterend interactief museum, vooral wanneer u met kinderen Amsterdam bezoekt. Het markante gebouw aan het IJ ligt vlakbij het centraal station.",
+            "address": "Oosterdok 2, 1011 VX Amsterdam"
+        },
+        {
+            "id": 15,
+            "name": "A'DAM Lookout",
+            "image": "https://www.adamlookout.com/wp-content/uploads/swing-overtheedge-open-6.jpg",
+            "overview": "A’dam LOOKOUT is een 360° observatiedek met het mooiste panorama over het centrum en de haven van Amsterdam. Bijzondere trekpleister is de ‘Edge Swing’ de hoogste schommel van Europa, waarbij u op de rand van het 10 meter hoge gebouw gaat schommelen. Geen waaghals? Geniet dan van een cocktail bij de rooftop bar.",
+            "address": "Overhoeksplein 5, 1031 KS Amsterdam"
+        },
+        {
+            "id": 16,
+            "name": "Het Scheepvaartmuseum",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Amsterdam_-_Nederlands_Scheepvaartmuseum_18.JPG",
+            "overview": "In dit museum gaat u terug in 500 jaar maritieme geschiedenis van Nederland zoals de Gouden Eeuw, maar ook over de huidige periode van het land dat grotendeels van de dijken afhankelijk is. U heeft de mogelijkheid de replica van het oude VOC-schip ‘Amsterdam’ te bewonderen en de collectie bevat o.a. schilderijen, scheepsmodellen, wapens en wereldkaarten.",
+            "address": "Kattenburgerplein 1, 1018 KK Amsterdam"
+        },
+        {
+            "id": 17,
+            "name": "Fietstours",
+            "image": "https://blog.hotelspecials.be/wp-content/uploads/sites/12/2017/09/amsterdam-1170x779.jpg",
+            "overview": "Do like the locals do! Amsterdam is een stad met meer fietsen dan inwoners. De ideale manier om in korte tijd veel bezienswaardigheden te bekijken. Huur zelf een fiets of ga mee op een van de fietstochten onder leiding van een gids.",
+            "address": "Amsterdam"
+        },
+        {
+            "id": 18,
+            "name": "Leidseplein & Nightlife",
+            "image": "https://www.mr-amsterdam.com/media/images/attractions-sights/leidseplein-amsterdam/leidseplein-amsterdam-large.jpg",
+            "overview": "Het Leidseplein is het meest levendige plein van Amsterdam. Rond het plein treft u vele cafés, restaurants, theaters en poppodia aan. Het nachtleven van de toeristen vindt plaats rond dit Leidseplein. Het maximale halen uit het nachtleven van Amsterdam? Kijk dan eens naar het aanbod van onze kroegentochten.",
+            "address": "Amsterdam"
+        },
+        {
+            "id": 19,
+            "name": "Amsterdam Museum",
+            "image": "https://assets.amsterdammuseum.nl/images/transforms/location/_2000x1468_crop_center-center_none/BC_02398_007-1725283567.jpg",
+            "overview": "Het ‘Amsterdam Museum’ vertelt u over zeven eeuwen geschiedenis van de stad Amsterdam. Van een kleine nederzetting aan de Amstel, de 17e Gouden Eeuw tot aan de huidige wereldstad. Het historische stadsmuseum ligt in het centrum van de stad en de manier om de stad beter te leren kennen.",
+            "address": "Amstel 51, 1018 EJ Amsterdam"
+        }
+    ],
+    "help": [
+        {
+            "question": "everything sucks so fucking much",
+            "answer": "hah i know right"
+        },
+        {
+            "question": "i feel so hahahaha great",
+            "answer": "yuh"
+        },
+        {
+            "question": "jesus idk wtf is going on with me",
+            "answer": "ugh"
+        },
+        {
+            "question": "great start of the year",
+            "answer": "yeah definitely"
+        },
+        {
+            "question": "im sick of this",
+            "answer": "like actually"
+        }
+    ]
+}

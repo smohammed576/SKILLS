@@ -1,0 +1,11 @@
+@use "../../abstracts/variables";
+@use "../../abstracts/mixins";
+
+.map{
+    @include mixins.flexBox;
+
+    &__image{
+        width: 100%;
+        object-fit: cover;
+    }
+}

@@ -40,18 +40,18 @@ function Options(){
     const stars = 
          [...Array(5)].map((star, index) => 
             index < ratingAmount ? (
-                <i onDoubleClick={() => {addRating(index + 1.5)}} onClick={() => {addRating(index + 1)}} className="fa-solid fa-star result__options--item-star" key={index}></i>
+                <i onDoubleClick={() => {addRating(index + 0.5)}} onClick={() => {addRating(index + 1)}} className="fa-solid fa-star result__options--item-star" key={index}></i>
             ) : (
-                <i onDoubleClick={() => {addRating(index + 1.5)}} onClick={() => {addRating(index + 1)}} className="fa-regular fa-star result__options--item-empty" key={index}></i>
+                <i onDoubleClick={() => {addRating(index + 0.5)}} onClick={() => {addRating(index + 1)}} className="fa-regular fa-star result__options--item-icon" key={index}></i>
             )
         )
     
     const getStars = 
          [...Array(5)].map((star, index) => 
             index < ratingAmount && index + 1 > ratingAmount ? 
-                <i onDoubleClick={() => {addRating(index + 1.5)}} onClick={() => {addRating(index + 1)}} className="fa-solid fa-star-half-stroke result__options--item-star" key={index}></i>
-            : index < ratingAmount ? <i onDoubleClick={() => {addRating(index + 1.5)}} onClick={() => {addRating(index + 1)}} className="fa-solid fa-star result__options--item-star" key={index}></i> 
-            : <i onDoubleClick={() => {addRating(index + 1.5)}} onClick={() => {addRating(index + 1)}} className="fa-regular fa-star result__options--item-icon" key={index}></i> 
+                <i onDoubleClick={() => {addRating(index + 0.5)}} onClick={() => {addRating(index + 1)}} className="fa-solid fa-star-half-stroke result__options--item-star" key={index}></i>
+            : index < ratingAmount ? <i onDoubleClick={() => {addRating(index + 0.5)}} onClick={() => {addRating(index + 1)}} className="fa-solid fa-star result__options--item-star" key={index}></i> 
+            : <i onDoubleClick={() => {addRating(index + 0.5)}} onClick={() => {addRating(index + 1)}} className="fa-regular fa-star result__options--item-icon" key={index}></i> 
         );
     
 

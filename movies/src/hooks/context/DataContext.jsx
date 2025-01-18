@@ -25,13 +25,15 @@ const DataProvider = ({children}) => {
     const [listoptions, setListoptions] = useState();
     const [addremove, setAddremove] = useState();
     const [ratingoptions, setRatingoptions] = useState();
+    // const [votingdata, setVotingdata] = useState([]);
+    // const [config, setConfig] = useState();
 
     useEffect(() => {
         (async () => {
             const [response, profileResponse, movieResponse, countryResponse, genreResponse, genresResponse, addResponse, JSONResponse, watchedResponse] = await Promise.all([
                 fetch(`https://api.themoviedb.org/3/search/multi?query=${name}&api_key=13631cc9bf997aabaa47ab22c3ee1f67&append_to_response=details`).then(response => response.json()),
                 fetch(`https://api.themoviedb.org/3/account/%7Baccount_id%7D?api_key=13631cc9bf997aabaa47ab22c3ee1f67&session_id=35e07d41174e5b9b3abdc25c4eb6ba839bba81f7&append_to_response=rated/movies,favorite/movies,watchlist/movies,lists`).then(response => response.json()),
-                fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=13631cc9bf997aabaa47ab22c3ee1f67&session_id=35e07d41174e5b9b3abdc25c4eb6ba839bba81f7&append_to_response=alternative_titles,keywords,release_dates,credits,recommendations,videos,account_states,lists`).then(response => response.json()),
+                fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=13631cc9bf997aabaa47ab22c3ee1f67&session_id=35e07d41174e5b9b3abdc25c4eb6ba839bba81f7&append_to_response=alternative_titles,keywords,release_dates,credits,recommendations,videos,account_states,lists,watch/providers,reviews,changes`).then(response => response.json()),
                 fetch(`https://api.themoviedb.org/3/configuration?api_key=13631cc9bf997aabaa47ab22c3ee1f67&append_to_response=countries`).then(response => response.json()),
                 fetch(`https://api.themoviedb.org/3/discover/movie?api_key=13631cc9bf997aabaa47ab22c3ee1f67&sort_by=vote_count.desc&${genreid}`).then(response => response.json()),
                 fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=13631cc9bf997aabaa47ab22c3ee1f67`).then(response => response.json()),
@@ -39,7 +41,7 @@ const DataProvider = ({children}) => {
                 fetch("/data.json").then(response => response.json()),
                 fetch(`https://api.themoviedb.org/3/list/8503521/item_status?api_key=13631cc9bf997aabaa47ab22c3ee1f67&movie_id=${id}`).then(response => response.json()),
                 fetch(`https://api.themoviedb.org/3/list/8503521/${addremove}?api_key=13631cc9bf997aabaa47ab22c3ee1f67&session_id=35e07d41174e5b9b3abdc25c4eb6ba839bba81f7`, listoptions).then(response => response.json()),
-                fetch(`https://api.themoviedb.org/3/movie/${id}/rating?api_key=13631cc9bf997aabaa47ab22c3ee1f67&session_id=35e07d41174e5b9b3abdc25c4eb6ba839bba81f7`, ratingoptions).then(response => response.json())
+                fetch(`https://api.themoviedb.org/3/movie/${id}/rating?api_key=13631cc9bf997aabaa47ab22c3ee1f67&session_id=35e07d41174e5b9b3abdc25c4eb6ba839bba81f7`, ratingoptions).then(response => response.json()),
             ])
                 setData(response);
                 setProfiledata(profileResponse);
@@ -50,11 +52,13 @@ const DataProvider = ({children}) => {
                 setAdddata(addResponse);
                 setJSONdata(JSONResponse);
                 setWatcheddata(watchedResponse);
+                // setVotingdata(votingResponse);
         })();
     }, [name, personid, genreid, id, addtype, options, watchid, listoptions, addremove, ratingoptions]);
 
     console.log(listoptions)
     console.log(profiledata)
+    // console.log(votingdata)
 
     return(
         <DataContext.Provider value={{data, profiledata, actordata, setActordata, name, setName, filmsdisplay, setFilmsdisplay, personid, setPersonid, moviedata, id, setId, countriesdata, JSONdata, adddata, setAdddata, displayoptions, setDisplayoptions, setGenreid, genreid, genredata, genrelist, addtype, setAddtype, setOptions, setWatchid, watcheddata, setListoptions, setAddremove, setRatingoptions}}>
